@@ -10,30 +10,16 @@
         <div id="app">
             <h2 class="text-3xl font-semibold mb-6 text-center">UpVote!</h2>
             <div class="flex flex-col items-center">
-                <div v-for="submission in sortedSubmissions" v-bind:key="submission.id" 
-                class="rounded w-11/12 md:w-1/2 py-4 px-6 mb-4 border border-gray-400 flex flex-row tex-left items-start">
-                    <figure class="flex-grow-0 flex-shrink-0 block mr-4">
-                        <img class="w-20" v-bind:src="submission.submissionImage">
-                    </figure>
-                    
-                    <div class="mr-6 flex-grow flex-shrink text-left">
-                        <h3>
-                            <a v-bind:href="submission.url" class="text-blue-800 font-bold text-lg">{{ submission.title }}</a>
-                            <span class="text-grey-700 p-1 text-xs p-1 bg-gray-300 rounded">#{{ submission.id }}</span>
-                        </h3>
-                        <p class="mb-1 text-gray-800">{{ submission.description }}</p>
-                        <small class="text-sm">
-                            Submitted by: <img class="inline w-8 rounded-full" v-bind:src="submission.avatar">
-                        </small>
-                    </div>
-                    
-                    <div class="flex-grow-0 flex-shrink-0">
-                        <span class="" v-on:click="upvote(submission.id)">
-                        <i class="las la-chevron-up"></i>
-                        <strong class="has-text-info">{{ submission.votes }}</strong>
-                        </span>
-                    </div>
+                <div v-for="submission in sortedSubmissions"
+                v-bind:key="submission.id" 
+                class="rounded w-11/12 md:w-1/2 py-4 px-6 mb-4 border border-gray-400"
+                v-bind:class="{ 'border-blue-600': submission.votes >= 20 }">
+                    <submission-component
+                        v-bind:submission="submission"
+                        v-bind:submissions="sortedSubmissions">
+                    </submission-component>
                 </div>
+                
             </div>
         </div>
         
