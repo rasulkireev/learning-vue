@@ -48,7 +48,7 @@ export const seedData = [
     abbvTitle: 'Sat',
     fullTitle: 'Saturday',
     events: [
-      { details: 'Chill with the parents', edit: false }
+      { details: 'Chill with the parents!!!', edit: false }
     ],
     active: false
   },
